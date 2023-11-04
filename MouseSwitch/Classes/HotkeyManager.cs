@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace MouseSwitch.Classes
@@ -74,19 +75,46 @@ namespace MouseSwitch.Classes
                 //Use keyboard class
                 foreach (GlobalHotkey hotkey in Hotkeys)
                 {
-                    if (Keyboard.Modifiers==hotkey.Modifier[0]&&Keyboard.IsKeyDown(hotkey.Key[0]))
+                    bool executable = true;
+                    //Check Modifier Keys
+                    /*foreach (ModifierKeys modifier in hotkey.Modifier)
                     {
-                        if (hotkey.CanExecute)
+                        if (!(Keyboard.Modifiers==modifier&&hotkey.CanExecute))
                         {
-                            //Just in case Callback is null.
-                            hotkey.Callback?.Invoke();
+                            executable=false;
+                            break;
+                        }
+                    }*/
+                    //Check keys
+                    foreach (Key key in hotkey.Key)
+                    {
+                        if (!executable)
+                        {
+                            break;
+                        }
+                        if (!(Keyboard.IsKeyDown(key)&&hotkey.CanExecute))
+                        {
+                            executable=false; break;
                         }
                     }
+                    Debug.WriteLine(executable);
+                    //Invoke using bool executable
+                    if (executable)
+                    {
+                        //Debug.WriteLine("succeeded");
+                        hotkey.Callback?.Invoke();
+                    }
+                    else
+                    {
+                        //Debug.WriteLine("fail");
+                    }
+
                 }
             }
 
             //Hotkey will be scanned
             return CallNextHookEx(HookID, nCode, wParam, lParam);
+            //I don't understand how this works bro
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]

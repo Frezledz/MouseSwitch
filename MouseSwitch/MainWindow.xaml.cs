@@ -30,11 +30,13 @@ namespace MouseSwitch
             HotkeyManager.SetupSystemHook();
             List<ModifierKeys> modifiers = new List<ModifierKeys>
             {
-                ModifierKeys.Control
+                //これ別にkeyクラスにCTRLとかあるしいらなくない??
             };
 
             List<Key> keys = new List<Key> {
-                Key.S
+                Key.S,
+                Key.LeftCtrl,
+                Key.LeftShift
             };
 
             GlobalHotkey saveHotkey = new GlobalHotkey(modifiers,keys, MouseChange);
@@ -42,7 +44,6 @@ namespace MouseSwitch
         }
         public void MouseChange()
         {
-            Debug.WriteLine("a");
             Mouseswitcher.SystemParametersInfo(Mouseswitcher.SPI_SETMOUSESPEED, 0, uint.Parse("15"), 0);
         }
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
