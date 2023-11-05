@@ -33,11 +33,13 @@ namespace MouseSwitch
             HotkeyManager.SetupSystemHook();
             List<ModifierKeys> modifiers = new List<ModifierKeys>
             {
-                ModifierKeys.Control
+                //これ別にkeyクラスにCTRLとかあるしいらなくない??
             };
 
             List<Key> keys = new List<Key> {
-                Key.S
+                Key.S,
+                Key.LeftCtrl,
+                Key.LeftShift
             };
 
             GlobalHotkey saveHotkey = new GlobalHotkey(modifiers,keys, MouseChange);
