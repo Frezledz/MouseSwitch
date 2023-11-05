@@ -16,6 +16,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wpfbgtest1.Hotkeys;
 
+
+
+
 namespace MouseSwitch
 {
     /// <summary>
@@ -26,7 +29,7 @@ namespace MouseSwitch
         public MainWindow()
         {
             InitializeComponent();
-
+            
             HotkeyManager.SetupSystemHook();
             List<ModifierKeys> modifiers = new List<ModifierKeys>
             {
@@ -39,11 +42,14 @@ namespace MouseSwitch
 
             GlobalHotkey saveHotkey = new GlobalHotkey(modifiers,keys, MouseChange);
             HotkeyManager.AddHotkey(saveHotkey);
+            Application.Current.MainWindow.Hide();
         }
+
+        int speed = 15;
         public void MouseChange()
         {
-            Debug.WriteLine("a");
-            Mouseswitcher.SystemParametersInfo(Mouseswitcher.SPI_SETMOUSESPEED, 0, uint.Parse("15"), 0);
+            speed = (speed+10)%20;
+            Mouseswitcher.SystemParametersInfo(Mouseswitcher.SPI_SETMOUSESPEED, 0, uint.Parse(speed.ToString()), 0);
         }
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
