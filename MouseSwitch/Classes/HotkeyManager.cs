@@ -97,7 +97,6 @@ namespace MouseSwitch.Classes
                             executable=false; break;
                         }
                     }
-                    Debug.WriteLine(executable);
                     //Invoke using bool executable
                     if (executable)
                     {

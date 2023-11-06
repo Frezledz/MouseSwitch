@@ -35,11 +35,13 @@ namespace MouseSwitch
             {
                 //これ別にkeyクラスにCTRLとかあるしいらなくない??
             };
-
+            Key testt;
+            Enum.TryParse("LShiftKey", out testt);//これってどうなの
             List<Key> keys = new List<Key> {
                 Key.S,
-                Key.LeftCtrl,
-                Key.LeftShift
+                testt
+                
+                
             };
 
             GlobalHotkey saveHotkey = new GlobalHotkey(modifiers,keys, MouseChange);
@@ -50,6 +52,7 @@ namespace MouseSwitch
         int speed = 15;
         public void MouseChange()
         {
+            Debug.WriteLine("ads");
             speed = (speed+10)%20;
             Mouseswitcher.SystemParametersInfo(Mouseswitcher.SPI_SETMOUSESPEED, 0, uint.Parse(speed.ToString()), 0);
         }
