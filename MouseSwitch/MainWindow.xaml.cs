@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 using Wpfbgtest1.Hotkeys;
 
 
@@ -35,8 +36,11 @@ namespace MouseSwitch
             {
                 //これ別にkeyクラスにCTRLとかあるしいらなくない??
             };
+            KeyConverter kc = new KeyConverter();
             Key testt;
-            Enum.TryParse("LShiftKey", out testt);//これってどうなの
+
+            //http://www.dotnetframework.org/default.aspx/4@0/4@0/DEVDIV_TFS/Dev10/Releases/RTMRel/wpf/src/Base/System/Windows/Input/KeyConverter@cs/1305600/KeyConverter@cs
+            testt = (Key)kc.ConvertFromString("CONTROL");
             List<Key> keys = new List<Key> {
                 Key.S,
                 testt
@@ -46,7 +50,7 @@ namespace MouseSwitch
 
             GlobalHotkey saveHotkey = new GlobalHotkey(modifiers,keys, MouseChange);
             HotkeyManager.AddHotkey(saveHotkey);
-            Application.Current.MainWindow.Hide();
+            System.Windows.Application.Current.MainWindow.Hide();
         }
 
         int speed = 15;
@@ -59,6 +63,25 @@ namespace MouseSwitch
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             HotkeyManager.ShutdownSystemHook();
+        }
+
+
+        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        {
+            string[] Keystr = (ShortSTR.Text).Split(",");
+            List<Key> keys = new List<Key>();
+            foreach (string k in Keystr) {
+                KeyConverter kc = new KeyConverter();
+                Key kk = (Key)kc.ConvertFromString(k);
+
+            }
+
+           
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
         }
     }
 }
