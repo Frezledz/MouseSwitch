@@ -68,13 +68,29 @@ namespace MouseSwitch
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            /*
             string[] Keystr = (ShortSTR.Text).Split(",");
+            KeyConverter kc = new KeyConverter();
+            bool sucs = true;
             List<Key> keys = new List<Key>();
-            foreach (string k in Keystr) {
-                KeyConverter kc = new KeyConverter();
-                Key kk = (Key)kc.ConvertFromString(k);
+            foreach (string key in Keystr)
+            {
+                
+                Key kk = (Key)kc.ConvertFromString(key);
+                if (kk==null)
+                {
+                    sucs = false;
+                    System.Windows.MessageBox.Show($"Your input {key} is invalid. Please make sure you don't have any misspelling.");
+                    break;
+                }
+            }if( sucs )
+            {
 
             }
+            foreach (string k in Keystr) {
+                Key kk = (Key)kc.ConvertFromString(k);
+
+            }*/
 
            
         }

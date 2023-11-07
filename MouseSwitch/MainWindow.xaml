@@ -6,14 +6,8 @@
         xmlns:local="clr-namespace:MouseSwitch"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="429*"/>
-            <ColumnDefinition Width="371*"/>
-        </Grid.ColumnDefinitions>
-        <TextBox Name ="ShortSTR" HorizontalAlignment="Left" Margin="10,29,0,0" TextWrapping="Wrap" Text="SHIFT,S" VerticalAlignment="Top" Width="216" Height="18" TextChanged="TextBox_TextChanged"/>
-        <Label Content="ShortCut Key combination :"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Click="SubmitButton_Click"/>
-
-    </Grid>
+    <!--どうやって複数入れるの？-->
+    <Label Content="ShortCut Key combination :"/>
+    <Button Content="Update" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Click="SubmitButton_Click"/>
+    <TextBox></TextBox>
 </Window>
