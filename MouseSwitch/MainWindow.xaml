@@ -5,9 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MouseSwitch"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MouseSwitcher" Height="326" Width="234" WindowStyle="ToolWindow" Icon="/logo.png">
     <!--どうやって複数入れるの？-->
-    <Label Content="ShortCut Key combination :"/>
-    <Button Content="Update" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Click="SubmitButton_Click"/>
-    <TextBox></TextBox>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="119*"/>
+            <ColumnDefinition Width="115*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="ShortCut Key combination :" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="ShortSTR" HorizontalAlignment="Left" Margin="10,30,0,0" TextWrapping="Wrap" Text="ALT,S" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Click="SubmitButton_Click"/>
+        <Label Content="Mouse speed (1-20) " HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ValueSTR" HorizontalAlignment="Left" Margin="10,150,0,0" TextWrapping="Wrap" Text="5,15" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Click="ValueButton_Click"/>
+        <Label Content="Separate each values using comma." HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="11" Grid.ColumnSpan="2"/>
+        <Image HorizontalAlignment="Left" Margin="12,240,0,0" VerticalAlignment="Top" Width="178" Source="/text1.png" Height="23" Grid.ColumnSpan="2"></Image>
+
+
+
+
+    </Grid>
+
 </Window>

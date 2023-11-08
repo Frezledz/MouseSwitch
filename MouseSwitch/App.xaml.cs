@@ -22,7 +22,7 @@ namespace MouseSwitch
             base.OnStartup(e);
 
             //アイコンの取得
-            var icon = GetResourceStream(new Uri("00.ico", UriKind.Relative)).Stream;
+            var icon = GetResourceStream(new Uri("logo.ico", UriKind.Relative)).Stream;
             //右クリックメニューを追加する
             var menu = new System.Windows.Forms.ContextMenuStrip();
             menu.Items.Add("Settings", null, Setting_Click);
