@@ -1,5 +1,5 @@
 # Mouse Switcher  
-[説明(日本語)](https://note.com/xx_freezer_xx/n/nc761f3c37227)
+[説明(日本語)](https://note.com/xx_freezer_xx/n/nc761f3c37227)  
 A simple Mouse speed switcher.  
 Download msi file from [Releases](https://github.com/xxXFreezerXxx/MouseSwitch/releases) and run it.  
 
