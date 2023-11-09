@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MouseSwitch.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Key" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ALT,S</Value>
+    </Setting>
+    <Setting Name="spd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3,15</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

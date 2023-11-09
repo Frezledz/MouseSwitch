@@ -5,7 +5,9 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace MouseSwitch.Classes
@@ -47,6 +49,35 @@ namespace MouseSwitch.Classes
 
             }
         }
+
+        public static List<Key>? STRtokeys(string kstr)
+        {
+
+            string[] Keystr = (kstr).Split(",");
+            KeyConverter kc = new KeyConverter();
+            List<Key> kks = new List<Key>();
+            {
+                //これ別にkeyクラスにCTRLとかあるしいらなくない??
+            };
+
+            foreach (string key in Keystr)
+            {
+
+                Key kk;
+                try
+                {
+                    kk = (Key)kc.ConvertFromString(key);
+                    kks.Add(kk);
+                }
+                catch
+                {
+                    System.Windows.MessageBox.Show($"Your input {key} is invalid. Please make sure you don't have any misspelling.", "What", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return null;
+                    
+                }
+            }
+            return kks;
+        }
         private static IntPtr SetHook(LowLevelKeyboardProc proc)
         {
             using (Process currentProcess = Process.GetCurrentProcess())
@@ -58,14 +89,13 @@ namespace MouseSwitch.Classes
             }
         }
 
-        public static void AddHotkey(GlobalHotkey hotkey)
+        public static void SetHotkey(GlobalHotkey hotkey)
         {
+            Hotkeys.Clear();
             Hotkeys.Add(hotkey);
         }
-        public static void RemoveHotkey(GlobalHotkey hotkey)
-        {
-            Hotkeys.Remove(hotkey);
-        }
+
+
 
         private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
